@@ -1,0 +1,53 @@
+\documentclass{amsart}
+\usepackage[margin=1.1in]{geometry} 
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{accents}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
+\input{shortcuts.tex}
+\setlength{\headheight}{40pt}
+
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}
+  \begin{proof}[Solution]}
+  {\end{proof}}
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek}
+\addbibresource{refs.bib}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\begin{document}
+\large
+\title[Dualizable Categories and Continuous K-Theory -- MPIM 2024]{Workshop on Dualizable Categories and Continuous K-Theory \\ Max Planck Institute for Mathematics, Bonn -- July 2024}
+\author{Wern Juin Gabriel Ong}
+\address{Bowdoin College, Brunswick, Maine 04011}
+\email{gong@bowdoin.edu}
+\urladdr{https://wgabrielong.github.io/}
+\maketitle
+\section*{Preliminaries}
+
+\newpage
+\tableofcontents
+\newpage
+\part*{End Matter}
+\printbibliography
+\end{document}
