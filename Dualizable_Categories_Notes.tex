@@ -1,5 +1,5 @@
 \documentclass{amsart}
-\usepackage[margin=1.1in]{geometry} 
+\usepackage[margin=1.5in]{geometry} 
 \usepackage{amsmath}
 \usepackage{tcolorbox}
 \usepackage{amssymb}
@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{color}
+\usepackage{euscript}
 \input{shortcuts.tex}
 \setlength{\headheight}{40pt}
 
@@ -20,7 +21,7 @@
   {\end{proof}}
 \renewcommand\qedsymbol{$\blacksquare$}
 
-\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek}
+\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek, todonotes}
 \addbibresource{refs.bib}
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -35,6 +36,10 @@
 \newtheorem{definition}[theorem]{Definition}
 \numberwithin{equation}{section}
 \setcounter{tocdepth}{1}
+
+\setuptodonotes{color=blue!20, size=tiny}
+
+
 \begin{document}
 \large
 \title[Dualizable Categories and Continuous K-Theory -- MPIM 2024]{Workshop on Dualizable Categories and Continuous K-Theory \\ Max Planck Institute for Mathematics, Bonn -- September 2024}
