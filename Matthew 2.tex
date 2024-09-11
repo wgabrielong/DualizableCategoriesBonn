@@ -1,1 +1,101 @@
 \section{Lecture II (9th September)}\label{sec: Matthew II}
+We begin with some recollections on $\catPr^{\Lsf}$. See \cite[\S 5]{HTT} for further exposition. 
+
+Recall the following definition. 
+\begin{definition}[Presentable Category]\label{def: presentable category}
+    An $\infty$-category $\Cscr$ is presentable if $\Cscr$ has all colimits and for some regular cardinal $\kappa$, the subcategory of $\kappa$-compact objects $\Cscr^{\kappa}$ is small and $\Cscr=\Ind_{\kappa}(\Cscr^{\kappa})$. 
+\end{definition}
+\begin{remark}
+    Recall that the $\kappa$-compact objects are those $x\in\Cscr$ such that $\Hom_{\Cscr}(x,-):\Cscr\to\Grpd_{\infty}$ that preserve $\kappa$-filtered colimits and $\Cscr=\Ind_{\kappa}(\Cscr^{\kappa})$ states that $\Cscr$ is $\kappa$-compactly generated. 
+\end{remark}
+\begin{example}
+    Let $\kappa=\omega_{0}$. If $\Cscr=\Ind(\Cscr^{\omega})$ then $\Cscr$ is a compactly generated category, the ind-completion of the subcategory of compact objects. For this to be presentable, the compact objects will have all finite colimits and thus $\Cscr$ will have all colimits. We will be most concerned with $\kappa=\omega_{1}$. 
+\end{example}
+We can now define $\catPr^{\Lsf}$ as follows. 
+\begin{definition}[$\catPr^{\Lsf}$]\label{def: PrL}
+    $\catPr^{\Lsf}$ is the $\infty$-category with objects presentable $\infty$-categories and morphisms colimit preserving functors. 
+\end{definition}
+\begin{remark}
+    By the adjoint functor theorem, colimit preserving functors are left adjoints, justifying the $\Lsf$ in the notation. 
+\end{remark}
+We can in fact show that $\catPr^{\Lsf}$ has all limits and these limits are computed on the underlying $\infty$-categories. 
+\begin{proposition}
+    Let $\catPr^{\Lsf}$ be the $\infty$-category of presentable $\infty$-categories with left adjoint functors. Then the forgetful functor to (big) $\infty$-categories preserves limits and colimits in $\catPr^{\Lsf}$ are computed as limits in $\catPr^{\Lsf}$ on passage to right adjoint functors. 
+\end{proposition}
+More explicitly, a diagram in $\catPr^{\Lsf}$ is a diagram with transition maps left adjoint functors. Passage to right adjoints gives a diagram of presentable $\infty$-categories with transition maps right adjoint functors. Under the equivalence $\catPr^{\Lsf}\cong(\catPr^{\Rsf})^{\Opp}$ it then suffices to compute the limit on the underlying (big) $\infty$-categories. 
+\begin{example}
+    Let $\catPr^{\Lsf}_{\St}$ be the subcategory of $\catPr^{\Lsf}$ in \Cref{def: PrL} spanned by those stable categories. To compute the pushout 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEJzY3IiXSxbMiwwLCJcXENzY3IiXSxbMiwxLCJcXENzY3IvXFxCc2NyIl0sWzAsMSwiMCJdLFswLDNdLFszLDJdLFsxLDJdLFswLDFdXQ==
+    \begin{tikzcd}
+        \Bscr && \Cscr \\
+        0 && {\Cscr/\Bscr}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    in $\catPr^{\Lsf}_{\St}$ the limit of the passage to right adjoints then gives an isomorphism $\Cscr/\Bscr=\ker(\Cscr\to\Bscr)$ where the functor $\Cscr\to\Bscr$ is the right adjoint of the inclusion $\Bscr\hookrightarrow\Cscr$. 
+\end{example}
+Recall that $\catPr^{\Lsf}$ has a symmetric monoidal structure given by the Lurie tensor product where for $\Bscr,\Cscr\in\catPr^{\Lsf}$ the tensor product $\Bscr\otimes\Cscr$ is determined by the universal property that for any $\infty$-category $\Escr$, a map $\Bscr\times\Cscr\to\Escr$ preserving colimits in each factor of the source is uniquely extended from a colimit-preserving map $\Bscr\otimes\Cscr\to\Escr$. This is in fact a closed symmetric monoidal structure with the internal-hom $\Hom_{\catPr^{\Lsf}}(\Bscr,\Cscr)=\Fun^{\Lsf}(\Bscr,\Cscr)$ where $\Fun^{\Lsf}(\Bscr,\Cscr)$ are the colimit preserving functors between the categories. By unwinding the definitions, one finds $\Bscr\otimes\Cscr=\Fun^{\Lsf}(\Bscr,\Cscr^{\Opp})^{\Opp}$. 
+
+One can observe that $\catPr^{\Lsf}$ has many idempotent algebra objects, those $\Ascr\in\catPr^{\Lsf}$ such that $\Ascr\otimes\Ascr\to\Ascr$ is an isomorphism. 
+\begin{example}
+    The $\infty$-category of spectra $\Sp$ is an idempotent object of $\catPr^{\Lsf}$. The modules over $\Sp$ are exactly the presentable stable $\infty$-categories $\catPr^{\Lsf}_{\St}\subseteq\catPr^{\Lsf}$.
+\end{example}
+As such, on restriction, $\catPr^{\Lsf}_{\St}$ is symmetric monoidal with unit $\Sp$. 
+
+We can now define dualizable categories as follows. 
+\begin{definition}
+    Let $\Cscr\in\catPr^{\Lsf}_{\St}$. $\Cscr$ is dualizable if there exists $\Cscr^{\vee}=\Hom^{\Lsf}(\Cscr,\Sp)$ and maps $\ev:\Cscr\otimes\Cscr^{\vee}\to\Sp$ and $\coev:\Sp\to\Cscr\otimes\Cscr^{\vee}$ such that 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXENzY3IiXSxbMiwwLCJcXENzY3JcXG90aW1lc1xcQ3Njcl57XFx2ZWV9XFxvdGltZXNcXENzY3IiXSxbNCwwLCJcXENzY3IiXSxbMCwxLCJcXENzY3Jee1xcdmVlfSJdLFsyLDEsIlxcQ3Njcl57XFx2ZWV9XFxvdGltZXNcXENzY3JcXG90aW1lc1xcQ3Njcl57XFx2ZWV9Il0sWzQsMSwiXFxDc2NyXntcXHZlZX0iXSxbMCwxLCJcXGlkX3tcXENzY3J9XFxvdGltZXNcXGNvZXYiXSxbMSwyLCJcXGV2XFxvdGltZXNcXGlkX3tcXENzY3J9Il0sWzQsNSwiXFxpZF97XFxDc2NyXntcXHZlZX19XFxvdGltZXNcXGV2Il0sWzMsNCwiXFxjb2V2XFxvdGltZXNcXGlkX3tcXENzY3Jee1xcdmVlfX0iXV0=
+    \begin{tikzcd}
+        \Cscr && {\Cscr\otimes\Cscr^{\vee}\otimes\Cscr} && \Cscr \\
+        {\Cscr^{\vee}} && {\Cscr^{\vee}\otimes\Cscr\otimes\Cscr^{\vee}} && {\Cscr^{\vee}}
+        \arrow["{\id_{\Cscr}\otimes\coev}", from=1-1, to=1-3]
+        \arrow["{\ev\otimes\id_{\Cscr}}", from=1-3, to=1-5]
+        \arrow["{\coev\otimes\id_{\Cscr^{\vee}}}", from=2-1, to=2-3]
+        \arrow["{\id_{\Cscr^{\vee}}\otimes\ev}", from=2-3, to=2-5]
+    \end{tikzcd}$$
+    are homotopic to the identities on $\Cscr,\Cscr^{\vee}$, respectively. 
+\end{definition}
+\begin{example}
+    For $\Cscr=\Ind(\Cscr_{0})$ for $\Cscr_{0}\in\Cat^{\Perf}$, then $\Cscr$ is dualizable. In fact, $\Cscr^{\vee}=\Ind((\Cscr_{0})^{\Opp})$. For $\Cscr=\Dscr(A)$ the derived $\infty$-category of a discrete ring $A$, $\Cscr^{\vee}=\Dscr(A^{\Opp})$ where the evaluation map is the tensor product of modules and the coevaluation map is the diagonal bimodule. 
+\end{example}
+The dualizable categories amalgamate into an $\infty$-category $\Cat^{\dual}_{\St}$. 
+\begin{definition}[$\Cat^{\dual}_{\St}$]\label{def: dualizable stable categories}
+    $\Cat^{\dual}_{\St}$ is the $\infty$-category with objects dualizable categorise and morphisms strongly continuous functors -- colimit-preserving functors with colimit-preserving right adjoints. 
+\end{definition}
+\begin{remark}
+    A continuous functor of compactly generated categories is strongly continuous if and only if it preserves compact objects. 
+\end{remark}
+\begin{example}
+    There is a functor $\Ind:\Cat^{\Perf}\to\Cat^{\dual}_{\St}$ by $\Cscr\mapsto\Ind(\Cscr)$
+\end{example}
+In fact, we have the following characterization of dualizable categories. 
+\begin{theorem}[Lurie, Clausen-Scholze, Efimov]\label{thm: characterization of dualizable categories}
+    Let $\Cscr\in\catPr^{\Lsf}_{\St}$. The following are equivalent. 
+    \begin{enumerate}
+        \item $\Cscr$ is dualizable. 
+        \item $\Cscr$ is a retract of a compactly generated category in $\catPr^{\Lsf}_{\St}$. 
+        \item The colimit functor $\Ind(\Cscr)\to\Cscr$ sending an ind-object to its colimit admits a left adjoint. 
+        \item $\Cscr$ is generated by compactly exhaustible objects. 
+        \item There exists compactly generated $\Ascr,\Bscr\in\catPr^{\Lsf}_{\St}$ and a strongly continuous localization functor $L:\Ascr\to\Bscr$ -- admitting a colimit-preserving fully faithful right adjoint -- such that $\Cscr=\ker(L)$. 
+        \item If $\Bscr\subseteq\Bscr'$ is a fully faithful inclusion in $\catPr^{\Lsf}_{\St}$ then $\Cscr\otimes\Bscr\to\Cscr\to\Bscr'$ is fully faithful.
+        \item $\Cscr$ satisfies Grothendieck's (AB6) axiom: for an indexing set $I$ and a filtered category $J_{i}$ and functors $f_{i}:J_{i}\to\Cscr$ then 
+        $$\prod_{i\in I}\colim_{j\in J_{i}}f_{i}(j_{i})=\colim_{(j_{i})\in\prod_{J_{i}},i\in I}\prod_{i\in I}f_{i}(j_{i}).$$
+        \item There exists a fully faithful strongly continuous map $\Cscr\to\Bscr$ where $\Bscr\in\catPr^{\Lsf}_{\St}$ is compactly generated. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We will show 
+
+    $(2)\Rightarrow(1)$ Retracts of dualizable objects are dualizable and compactly generated categories are dualizable. 
+
+    $(2)\Rightarrow(3)$ (3) holds for compactly generated categories so \todo{App. D of Lurie's SAG.}
+
+    $(3)\Rightarrow(8)$ The functor $\hat{\ysf}:\Cscr\to\Ind(\Cscr)$ factors through $\Ind(\Cscr^{\kappa})$. 
+
+    $(8)\Rightarrow(2)$ If there is $i:\Cscr\to\Bscr$ is strongly continuous with $\Bscr$ compactly generated then $i^{R}i=\id_{\Cscr}$ and $\Cscr$ is a retract of $\Bscr$. 
+
+    $(1)\Rightarrow(2)$ By presentability, there exists a Bousfield localization functor $\Ind(\Cscr^{\kappa})\to\Cscr$. We show this localization has a continuous section by showing that $\Fun^{\Lsf}(\Cscr,\Ind(\Cscr^{\kappa}))\to\Fun^{\Lsf}(\Cscr,\Cscr)$ is essentially surjective. By dualizability, $\Cscr^{\vee}\otimes\Ind(\Cscr^{\kappa})\to\Cscr^{\vee}\otimes\Cscr$ is essentially surjective, which holds since it is a Bousfield localization. 
+\end{proof}
