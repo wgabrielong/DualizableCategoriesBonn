@@ -1,1 +1,55 @@
 \section{Lecture III (10th September)}\label{sec: Matthew III}
+We turn to a discussion of compact morphisms. 
+\begin{definition}[Compact Morphism]\label{def: compact morphism}
+    Let $\Cscr\in\catPr^{\Lsf}_{\St}$. A morphism $f:X\to Y$ in $\Cscr$ is compact if for every ind-object $\{Z_{i}\}_{i\in I}$ in $\Cscr$ such that $\colim_{I}Z_{i}=0$ then 
+    $$\pi_{*}\colim_{I}\Hom(Y,Z_{i})\to\pi_{*}\colim_{I}\Hom(X,Z_{i})$$
+    is the zero map. 
+\end{definition}
+\begin{remark}
+    $X$ is compact if and only if $\id_{X}$ is a compact morphism. 
+\end{remark}
+\begin{remark}
+    Compact morphisms form a 2-sided ideal. In particular, a morphism that factors through a compact object is a compcat morphism. In fact, the converse is true if $\Cscr$ is compactly generated. 
+\end{remark}
+\begin{definition}[Compactly Exhaustible]\label{def: compactly exhaustible}
+    Let $\Cscr\in\catPr^{\Lsf}_{\St}$. $X\in\Cscr$ is compactly exhaustible if and only if $X$ is a sequential colimit along compact maps -- $\colim_{\NN}X_{n}$ where each transition map $X_{n}\to X_{n+1}$ compact. 
+\end{definition}
+Before considering some examples of dualizable categories, we recall the following definition. 
+\begin{definition}[Homological Epimorphism]\label{def: homological epimorphism}
+    Let $f:A\to B$ be a map of $\EE_{1}$-rings. $f:A\to B$ is a homological epimorphism if $\Dscr(B)\to\Dscr(A)$ is fully faithful. 
+\end{definition}
+\begin{remark}
+    Equivalently, $B$ is idempotent or that the kernel of the extension of scalars functor $-\otimes_{A}B:\Dscr(A)\to\Dscr(B)$ is dualizable. 
+\end{remark}
+Note that there are few classical examples of this in classical ring theory, but a number of examples arise from Faltings and Gabber-Ramero's almost ring theory. 
+\begin{example}
+    Let $R$ be a commutative ring and $I\subseteq R$ an ideal such that $I$ is flat as an $R$-module and $I^{2}=I$ then the map $R\to R/I$ is a homological epimorphism. 
+\end{example}
+Another arithmetic example is as follows. 
+\begin{example}
+    Let $A, B$ be perfect $\mathbb{F}_{p}$-algebras. If $A\to B$ is a surjection then this is a homological epimorphism. In this case are no higher tor of $B$ with itself over $A$ with $B\otimes^{L}_{A}B\to B$ is an isomorphism. 
+\end{example}
+Yet another important example is the case of sheaves on a locally compact Hausdorff space. 
+\begin{definition}[Sheaves on a LCH Space]\label{def: sheaves on a LCH space}
+    Let $X$ be a locally compact Hausdorff space. $\Sh(X,\Sp)$, the $\infty$-category of sheaves of spectra on $X$ is a subcategory of $\Fun(N(\Opens(X))^{\Opp}, \Sp)$ consisting of functors $\Fscr$ such that:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Fscr(\emptyset)=0$. 
+        \item For $U,V\subseteq X$ open the square 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEZzY3IoVVxcY3VwIFYpIl0sWzIsMCwiXFxGc2NyKFUpIl0sWzAsMSwiXFxGc2NyKFYpIl0sWzIsMSwiXFxGc2NyKFVcXGNhcCBWKSJdLFswLDFdLFsxLDNdLFswLDJdLFsyLDNdXQ==
+        \begin{tikzcd}
+            {\Fscr(U\cup V)} && {\Fscr(U)} \\
+            {\Fscr(V)} && {\Fscr(U\cap V)}
+            \arrow[from=1-1, to=1-3]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-3]
+        \end{tikzcd}$$
+        is a pullback. 
+        \item For a filtered union of open subsets $\bigcup_{i\in I}U_{i}$ then
+        $$\Fscr\left(\bigcup_{i\in I}U_{i}\right)\longrightarrow\lim_{I}\Fscr(U_{i})$$
+        is an isomorphism.
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    Let $X$ be a locally compact Hausdorff space. The $\infty$-category of sheaves of spectra $\Sh(X,\Sp)$ is dualizable. 
+\end{example}

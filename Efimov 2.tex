@@ -1,1 +1,115 @@
 \section{Lecture II (11th September)}\label{sec: Efimov II}
+We turn to a discussion of localizing invariants of sheaves. In fact, the general case follows from a statement about sheaves on the real line. 
+\begin{definition}[Sheaves with Non-Negative Singular Support]\label{def: sheaves with non-negative singular support}
+     Let $\Fscr\in\Sh(\RR,\Sp)$. $\Fscr$ has non-negative singular support if for any $a<b$ $\Fscr((-\infty,b))\to\Fscr((a,b))$ is an isomorphism. 
+\end{definition}
+\begin{remark}
+    Equivalently, the singular support of $\Fscr$ has singular support contained in the non-negative part of the cotangent bundle. 
+\end{remark} 
+We can then define the following category of non-negative sheaves. 
+\begin{definition}[Non-Negative Sheaves]\label{def: non-negative sheaves}
+    The category of non-negative sheaves on $\RR$ is the subcategory $\Sh_{\geq0}(\RR,\Sp)\subseteq\Sh(\RR,\Sp)$ such with non-negative singular support. 
+\end{definition}
+To be able to compute localizing invariants, we want to form a resolution by compactly generated categories which is given by the following proposition. 
+\begin{proposition}\label{prop: SES for non-negative sheaves}
+    There is a short exact sequence in $\Cat^{\dual}$:
+    \begin{equation}\label{eqn: SES for non-negative sheaves}
+        % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXFNoX3tcXGdlcTB9KFxcUlIsXFxTcCkiXSxbMCwwLCIwIl0sWzIsMCwiXFxGdW4oXFxRUV97XFxsZXF9XntcXE9wcH0sXFxTcCkiXSxbMywwLCJcXHByb2Rfe1xcUVF9XFxTcCJdLFs0LDAsIjAiXSxbMSwwXSxbMCwyXSxbMyw0XSxbMiwzXV0=
+    \begin{tikzcd}
+        0 & {\Sh_{\geq0}(\RR,\Sp)} & {\Fun(\QQ_{\leq}^{\Opp},\Sp)} & {\prod_{\QQ}\Sp} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}
+    \end{equation}
+\end{proposition}
+\begin{proof}[Proof Outline]
+    The essential content of the proof is that any sheaf $\Fscr\in\Sh_{\geq0}(\RR,\Sp)$ is determined by its value on rays $(-\infty,a)$ for $a\in\QQ$ and the sheaf condition reduces to $\Fscr((-\infty,a))=\lim_{b<a}\Fscr((-\infty,b))$ by \Cref{def: sheaves on a LCH space} (iii). Denoting the functor $\varphi:\Fun(\QQ_{\leq}^{\Opp},\Sp)\to\prod_{\QQ}\Sp$, we have $\varphi(\Fscr)_{a}=\mathrm{cone}(\colim_{b>a}\Fscr(b)\to\Fscr(a))$. Taking $\QQ$ to be a dense linearly ordered set in $\RR$, $\varphi$ is a localization of categories. $\varphi$ admits a right adjoint $\varphi^{R}$ defined by $\varphi^{R}((X_{a})_{a\in\QQ})(b)=X_{b}$ with transition maps given by zero maps. As such $\varphi\circ\varphi^{R}=\id_{\Fun(\QQ_{\leq}^{\Opp},\Sp)}$. We can now observe that $\Sh_{\geq0}(\RR,\Sp)=\varphi^{R}(\prod_{\QQ}\Sp)^{\perp}$ the right orthogonal of the essential image of the right adjoint, but this agrees with the left orthogonal since the inclusion of the category has both left and right adjoints giving an equivalence with the left orthogonal which is precisely the kernel of $\varphi$. 
+\end{proof}
+\begin{remark}
+    $\varphi$ can be thought of as a variant of extension of scalars in the setting of almost mathematics. D. Vaintrob gives an interpretation of the middle term $\Fun(\QQ_{\leq}^{\Opp},\Sp)$ as quasicoherent sheaves on the infinite root stack and the functor $\varphi$ as a pullback to the infinite root stack. 
+\end{remark}
+Observe that the latter two terms of the exact sequence (\ref{eqn: SES for non-negative sheaves}) are compactly generated. Denoting 
+\begin{equation}\label{def: compact objects A and B}
+    \Ascr=\Fun(\QQ_{\leq}^{\Opp},\Sp)^{\omega}\text{ and }\Bscr=\left(\prod_{\QQ}\Sp\right)^{\omega}=\bigoplus_{\QQ}\Sp^{\omega},
+\end{equation}
+we can show the functor $\varphi^{\omega}:\Ascr\to\Bscr$ is a K-equivalence. 
+\begin{definition}[K-Equivalence]\label{def: K-equivalence}
+    Let $\varphi:\Ascr\to\Bscr$ be a functor. $f$ is a K-equivalence if there exists $\psi:\Bscr\to\Ascr$ such that $[\varphi\circ\psi]\cong[\id_{\Bscr}]\in K_{0}(\Fun(\Bscr,\Bscr))$ and $[\psi\circ\varphi]\cong[\id_{\Ascr}]\in K_{0}(\Fun(\Ascr,\Ascr))$. 
+\end{definition} 
+To show the desired K-equivalence statement, we will further require the following lemma concerning completed semiorthogonal decompositions. This lemma will also be pertinent to forthcoming discussions of the K-theory of nuclear modules. 
+\begin{lemma}\label{lem: K0 commutes with limits along SOD}
+    Let $\Cscr\in\Cat^{\Perf}$ be a small category with infinite semiorthogonal decomposition $\Cscr=\langle\Cscr_{0},\Cscr_{1},\dots\rangle$ and $\Bscr_{n}=\langle\Cscr_{0},\dots,\Cscr_{n}\rangle\subseteq\Cscr$. Then there are isomorphisms
+    $$K_{0}(\lim_{n}\Bscr_{n})\cong\prod_{n}K_{0}(\Cscr_{n})\cong\lim_{n}K_{0}(\Bscr_{n}).$$
+\end{lemma}
+In other words, the formation of $K_{0}$ commutes with this especially nice limit. 
+\begin{proof}
+    There is a natural map $\lim_{n}\Bscr_{n}\to\prod_{\NN}\Cscr_{n}$. Denoting objects of $\Bscr_{n}$ by tuples $(x_{0},x_{1},\dots,x_{n})$ with $x_{i}\in\Cscr_{i}$ and $\Escr=\lim_{n}\Bscr_{n}$ there is a functor $F:\Escr\to\Cscr_{n}$ by $(x_{0},x_{1},\dots)\mapsto x_{n}$ and a functor $G:\prod_{\NN}\Cscr_{n}\to\Escr$ by $(x_{n})_{n\in\NN}\mapsto(0,\dots,0,x_{n},0,\dots,0)$ where all the transition maps are zero maps. $F\circ G\cong\id_{\Cscr_{n}}$ and we want to show $G\circ F\cong\id_{\Escr}$. We define endofunctors $\Phi_{n}:\Escr\to\Escr$ by $\Phi_{n}(x)=(0,\dots,x_{n},x_{n+1},\dots)$ with the transition maps as in $\Escr$. This yields an exact triangle in $\Fun(\Escr,\Escr)$ 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXGJpZ29wbHVzX3tuXFxnZXExfVxcUGhpX3tufSJdLFsxLDAsIlxcYmlnb3BsdXNfe25cXGdlcTB9XFxQaGlfe259Il0sWzIsMCwiR1xcY2lyYyBGIl0sWzAsMV0sWzEsMl1d
+    \begin{tikzcd}
+        {\bigoplus_{n\geq1}\Phi_{n}} & {\bigoplus_{n\geq0}\Phi_{n}} & {G\circ F}
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+    \end{tikzcd}$$
+    but then employing an Eilenberg Swindle-type argument, we can further observe that in K-groups 
+    $$[G\circ F]\cong\left[\bigoplus_{n\geq0}\Phi_{n}\right]-\left[\bigoplus_{n\geq1}\Phi_{n}\right]\cong[\Phi_{0}]\cong[\id_{\Escr}].$$
+\end{proof}
+The result is as follows. 
+\begin{proposition}\label{prop: K-equivalence of functors A to B}
+    Let $\Ascr,\Bscr$ be as in (\ref{def: compact objects A and B}). The induced functor on compact objects $\varphi^{\omega}:\Ascr\to\Bscr$ K-equivalence.
+\end{proposition}
+\begin{proof}
+    Let $\psi:\Bscr\to\Ascr$ given by $h_{a}$ for $a\in\QQ$ where $h_{a}$ are representable presheaves
+    $$h_{a}(b)\begin{cases}
+        \mathbb{S} & b\leq a \\
+        0 & b>a
+    \end{cases}$$
+    and $\mathbb{S}$ is the sphere spectrum. This is a section of $\varphi^{\omega}$ so $\varphi\circ\psi\cong\id_{\Ascr}$. Conversely consider a bijection $\NN\to\QQ$ and let $\Ascr_{n}\subseteq\Ascr$ be sequences of representable presheaves $h_{a_{n}}$ as above so we have that $\Fun(\Ascr,\Ascr)\cong\lim_{n}\Fun(\Ascr_{n},\Ascr)$ but the restriction functors $\Fun(\Ascr_{n+1},\Ascr)\to\Fun(\Ascr_{n},\Ascr)$ have a fully faithful left and right adjoints. As such, from \Cref{lem: K0 commutes with limits along SOD} we have that $K_{0}(\Fun(\Ascr,\Ascr))\cong\lim_{n}K_{0}(\Fun(\Ascr_{n},\Ascr))=\mathrm{End}_{\ZZ}(\bigoplus_{\QQ}\ZZ)$ since $K_{0}(\mathbb{S})=\ZZ$. As such $[\psi\circ\varphi]=\id_{\Ascr}$.
+\end{proof}
+These results are sufficient to show that the image of non-negative sheaves on the real line under a localizing invariant is always trivial. 
+\begin{theorem}\label{thm: trivial image of non-negative sheaves on the real line}
+    For all localizing invariants $F:\Cat^{\Perf}\to\Escr$, $F^{\cont}(\Sh_{\geq0}(\RR,\Sp))=0$. 
+\end{theorem}
+\begin{remark}
+    It is quite surprising that \Cref{thm: trivial image of non-negative sheaves on the real line} can be proved for arbitrary localizing invariants, without the additional hypothesis that the functor commutes with filtered colimits. 
+\end{remark}
+\begin{theorem}
+    Let $F:\Cat^{\Perf}\to\Escr$ be a localizing invariant with $\Escr$ accessible and $X$ a finite CW complex. If $\Cscr\in\Cat^{\dual}_{\St}$ is a dualizable category, then $F^{\cont}(\Cscr)=F^{\cont}(\Sh(X,\Cscr))$. 
+\end{theorem}
+
+As a corollary, we have the following as a special case of the above. 
+\begin{corollary}
+    Let $R$ be an $\EE_{1}$-ring and $X$ a finite CW complex. Then $$K_{0}^{\cont}(\Sh(X,\Mod_{R}))=[X,\Omega^{\infty}K(R)].$$
+\end{corollary}
+Using the above, we can also show that $K$-theory commutes with infinite products. 
+
+Turning to the category of sheaves on a locally compact Hausdorff space, we have the following.
+\begin{theorem}\label{thm: criterion for isomorphism of localizing invariants}
+    Let $F,G:\Cat^{\Perf}\to\Escr$ be localizing invariants with $\Escr$ having a non-degenerate $t$-structure and $\varphi: F\to G$ be a map in $\Fun(\Cat^{\Perf},
+    \Escr)$. If $\varphi$ is an isomorphism on $\pi_{0}$, then $\varphi$ is an isomorphism in $\Fun(\Cat^{\Perf},\Escr)$.
+\end{theorem}
+\begin{proof}[Proof Outline]
+    Noting that $\pi_{n}F(\Cscr)\cong\pi_{n+1}F(\Calk_{\omega_{1}}(\Cscr))$ and similarly for $G$, it follows by induction that $\pi_{n}\varphi$ is an isomorphism from $\pi_{n}F\to\pi_{n}G$ for $n\geq0$. The same proof applies in the continuous setting for $n\leq-1$. 
+
+    For $\Cscr\in\Cat^{\dual}_{\St}$ there is a short exact sequence 
+    $$% https://q.uiver.app/#q=WzAsNSxbMywwLCJcXENzY3IiXSxbNCwwLCIwIl0sWzIsMCwiXFxTaF97XFxnZXEwfShcXFJSLFxcU3ApIl0sWzEsMCwiXFxTaF97PjB9KFxcUlIsXFxTcCkiXSxbMCwwLCIwIl0sWzAsMSwiXFxHYW1tYV97Y30iXSxbNCwzXSxbMywyXSxbMiwwXV0=
+    \begin{tikzcd}
+        0 & {\Sh_{>0}(\RR,\Sp)} & {\Sh_{\geq0}(\RR,\Sp)} & \Cscr & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow["{\Gamma_{c}}", from=1-4, to=1-5]
+    \end{tikzcd}$$
+    inducing an isomorphism $\pi_{n}F^{\cont}(\Cscr)\cong\pi_{n-1}(\Sh_{>0}(\RR,\Sp))$ by the vanishing of the middle term by \Cref{thm: trivial image of non-negative sheaves on the real line} so by induction $\pi_{n}\varphi$ is an isomorphism for all $n$. 
+\end{proof}
+\begin{corollary}
+    The $K$-theory functor $K:\Cat^{\Perf}\to\Sp$ commutes with products. 
+\end{corollary}
+\begin{proof}
+    Let $\Cscr\in\Cat^{\Perf}$ be a small category and a set $I$, the map $K(\prod_{I}\Cscr)\to\prod_{I}K(\Cscr)$ can be considered as a morphism of localizing invariants which induces an isomorphism on $K_{0}$ so the result follows from \Cref{thm: criterion for isomorphism of localizing invariants}.
+\end{proof}
+The following statement gives a variant of homotopy invariance. 
+\begin{theorem}\label{thm: characterizations of localizing invariants}
+    Let $X$ be a finite CW complex. If $F:\Cat^{\Perf}\to\Escr$ is a localizing invariant and $\Cscr\in\Cat^{\dual}_{\St}$ then $F^{\cont}(\Sh(X,\Cscr))\cong F^{\cont}(\Cscr)^{X}=\Gamma(X,F^{\cont}(\Cscr))$. 
+\end{theorem}
